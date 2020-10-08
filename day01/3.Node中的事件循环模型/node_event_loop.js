@@ -9,10 +9,14 @@ setInterval:设置循环定时器
 setTimeout: 设置延迟定时器
 */
 
+const {
+  nextTick
+} = require("process");
+
 /*
-  第一个阶段：timers(定时器阶段--setTimeout,setInterval)
-           1.开始计时
-           2.执行定时器的回调
+  第一个阶段：timers(定时器阶段 --- setTimeout，setInterval)
+            1. 开始计时
+            2. 执行定时器的回调
 
   第二个阶段：pending callbacks (系统阶段)
 
@@ -32,23 +36,22 @@ setTimeout: 设置延迟定时器
 
   第六个阶段：close callbacks (关闭回调阶段)
   
-  process.nextTick() ---- 用于设置立即执行函数(“VIP”-----能在任意阶段优先执行)
+  process.nextTick() ---- 用于设置立即执行函数(能在任意阶段优先执行(但是要排在主线程除外))
 */
 
-//延迟定时器
-setTimeout(()=>{
-  console.log('setTimeout所指定的回调函数执行了')
-})
+// 延迟定时器
+setTimeout(() => {
+  console.log('setTimeout所指定的回调函数执行了');
+}, 1000);
 
-//立即执行函数（回调）
-setImmediate(()=>{
-   console.log('我是setImmediate指定的回调') 
-})
+// 立即执行函数(回调)
+setImmediate(() => {
+  console.log('我是setImmediate指定的回调');
+});
 
-//立即执行函数（回调）
-process.nextTick(()=>{
-   console.log('process.nextTick所指定的回调执行了')
-})
+// 立即执行函数(回调)
+process.nextTick(() => {
+  console.log('process.nextTick所指定的回调执行了');
+});
 
-console.log('我是主线程上的代码')
-
+console.log('我是主线程上的代码');
