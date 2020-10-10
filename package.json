@@ -1,0 +1,12 @@
+{
+  "name": "wangxiwen",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/MrwangCC/Node.git",
+  "author": "wangxiwen <15737531857@163.com>",
+  "license": "MIT",
+  "dependencies": {
+    "mongoose": "^5.10.9",
+    "uniq": "^1.0.1"
+  }
+}
