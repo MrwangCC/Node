@@ -1,3 +1,5 @@
+let mongoose = require('mongoose');
+
 // 1. 对进入的数据进行校验  ----- 引入模式对象
 let Schema = mongoose.Schema;
 
