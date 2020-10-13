@@ -6,6 +6,7 @@
   "author": "wangxiwen <15737531857@163.com>",
   "license": "MIT",
   "dependencies": {
+    "express": "^4.17.1",
     "mongoose": "^5.10.9",
     "uniq": "^1.0.1"
   }
