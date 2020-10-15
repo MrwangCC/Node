@@ -34,8 +34,23 @@ app.post('/', (request,response) => {
 });
 // 一级路由
 app.get('/demo', (request,response) => {
-    response.download(__dirname + './jiaojiao.jpg')
-    // response.send('我是demo路由返回的数据');
+    /**
+     * 什么叫做浏览器给服务器响应了
+     *     1. 服务器给浏览器一段文字
+     *     2. 服务器给浏览器一个图片
+     *     3. 服务器给浏览器一个视频
+     *     4. 服务器告诉浏览器下载一个文件
+     *     5. 服务器告诉浏览器重定向
+     *     备注：多个响应以response.send为主
+     */
+    // response.download('day05/2.路由/public/jiaojiao.jpg');
+    // response.sendFile(__dirname + '/public/jiaojiao.jpg');
+    // response.redirect('/demo/test');
+    // response.set('demo', 'wangxiwen');
+    response.status(404);
+    response.send('我是demo路由返回的数据');
+    // console.log(response.get('ETag'));
+    // response.send('还有东西');   // 会抛一个异常，不能send两次
 });
 // 二级路由
 app.get('/demo/test', (request,response) => {
