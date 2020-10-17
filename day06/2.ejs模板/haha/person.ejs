@@ -1,32 +1,38 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
+
 <head>
-  <meta charset="UTF-8">
-  <title>show</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>show</title>
 </head>
+
 <body>
+    <!-- 
+        ejs语法：
+            1. <% %>：里面能写任意的js代码，但不会向浏览器输出任何东西
+            2. <%- %>：能够将后端传递过来对象指定key所对应value渲染的页面
+            3. <%= %>：能够将后端传递过来对象指定key所对应value渲染的页面
+     -->
+    <h1>模板</h1>
+    <!-- 
+        <div>data</div>
+        <div>data</div>
+     -->
+    <%
+        for(var i = 0; i < persons.length; i++){
+            let item = persons[i]; %>
+    <ul>
+        <li>姓名：<%=item.name%></li>
+        <li>年龄：<%=item.age%></li>
+    </ul>
+    <%    }
+    %>
 
-<!--
-       ejs语法：
-            1.< % % >   里面能写任意js代码，但是不会向浏览器输出任何东西。
-            2.< %- % >  能够将后端传递过来对象指定key所对应value渲染的页面
-            3.< %= % >  能够将后端传递过来对象指定key所对应value渲染的页面
 
--->
-
-<h1>我是一个新的页面</h1>
-<h1>data</h1>
-<!--<div>< %-data% ></div>
-<div>< %=data% ></div>-->
-<%
-    for (var i=0; i<persons.length; i++ ){
-      let item = persons[i] %>
-      <ul>
-          <li class="name">姓名：<%=item.name%></li>
-          <li>年龄：<%=item.age%></li>
-      </ul>
-<%}%>
 
 
 </body>
+
 </html>
