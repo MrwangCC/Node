@@ -15,12 +15,12 @@ router.use(cookieParser())
 //用于展示登录界面的路由，无其他任何逻辑 ----- UI路由
 router.get('/login',(req,res)=>{
   const {email} = req.query
-  res.render('login',{errMsg:{email}})
+  res.render(__dirname + 'login',{errMsg:{email}})
 })
 
 //用于展示注册界面的路由，无其他任何逻辑 ----- UI路由
 router.get('/register',(req,res)=>{
-  res.render('register',{errMsg:{}})
+  res.render(__dirname + 'register',{errMsg:{}})
 })
 
 //用于展示个人中心界面的路由，无其他任何逻辑 ----- UI路由
