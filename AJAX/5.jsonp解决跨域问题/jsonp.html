@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body> 
+    <!--
+        get:
+            1. form ----- 不受同源策略的限制
+            2. ajax ----- 受到同源策略的限制
+            3. 浏览器地址栏 ----- 不受同源策略的限制
+            4. <img>、<link>、<script src>：html中所有能访问外部资源的标签 ----- 不受同源策略的限制
+    -->
+
+    <!-- html中的script标签，不受同源策略的限制 -->
+    <script src="http://localhost:3000/test"></script>
+</body>
+
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <button id="btn">点击使用jQuery封装的jsonp获取数据</button>
+
+    <script src="./public/js/jquery-1.10.1.js"></script>
+    <script>
+        /**
+         * 1. 提前定义好一个等待被调用的函数
+         * 2. 创建一个script节点
+         * 3. 为节点指定src地址，同时指定好回调函数的名字
+         * 4. 将节点插入页面
+         * 备注：以上所有步骤都由jQuery底层全部完成
+        */
+        let btn = $('#btn');
+
+        btn.click(function () {
+            // 完整写法
+            // $.ajax({
+            //     url: 'http://localhost:3000/test',
+            //     method: 'get',
+            //     dataType: 'jsonp',  // 该属性，控制了以上四步
+            //     data: {
+            //         name: 'wangxiwen',
+            //         age: 18
+            //     },
+            //     success: function (result) {
+            //         console.log(result);
+            //     },
+            //     error: function (err) {
+            //         console.log(err);
+            //     }
+            // })
+
+            // 精简写法
+            $.getJSON('http://localhost:3000/test?callback=?', {
+                name: 'wangxiwen',
+                age: 18
+            }, function (data) {
+                console.log(data);
+            });
+        });
+    </script>
+</body>
+
+</html>
