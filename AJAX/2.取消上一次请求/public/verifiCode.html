@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>原生js_ajax_get</title>
+</head>
+
+<body>
+    <h1>该页面是测试取消上一次请求</h1>
+    <button id="btn">点击获取验证码</button>
+
+    <script>
+        let btn = document.getElementById('btn');
+        let lastxhr;
+
+        btn.onclick = function () {
+            if(lastxhr){
+                lastxhr.abort();
+            }
+            lastxhr = getAuthCode();
+        }
+
+        // 专门用于请求验证码的函数
+        function getAuthCode() {
+            let xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    console.log(xhr.response);
+                }
+            }
+            xhr.open('get', 'http://localhost:3000/get_code');
+            xhr.send();
+            // xhr.abort();    // 用于“取消”本次请求
+            /**
+             * 关于xhr.about
+             *      1. 如果来的及，半路取消，请求根本没有到达服务器
+             *      2. 如果来不及，拒之门外，请求已经到达了服务器，且服务器已经给出响应
+             *      3. 也存在根本不起作用的情况
+            */
+           return xhr;
+        }
+    </script>
+</body>
+
+</html>
