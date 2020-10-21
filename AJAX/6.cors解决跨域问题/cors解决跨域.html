@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <button id="btn">点击获取数据（后端已经经过cors解决跨域了）</button>
+
+    <script src="./public/js/jquery-1.10.1.js"></script>
+    <script>
+        let btn = $('#btn');
+
+        btn.click(function () {
+            // 完整写法
+            $.ajax({
+                url: 'http://localhost:3000/test',
+                method: 'get',
+                data: {
+                    name: 'wangxiwen',
+                    age: 18
+                },
+                success: function (result) {
+                    console.log(result);
+                },
+                error: function (err) {
+                    console.log(err);
+                }
+            })
+        });
+    </script>
+</body>
+
+</html>
